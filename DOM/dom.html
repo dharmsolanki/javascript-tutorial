@@ -18,5 +18,30 @@
         <h1>Lorem ipsum dolor sit amet.</h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, et.</p>
     </div>
+
+    <div class="parent">
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+    </div>
 </body>
+
+<script>
+    const parent = document.querySelector('.parent');
+
+    // for (let i = 0; i < parent.children.length; i++) {
+        
+    //     console.log(parent.children[i].innerHTML)
+        
+    // }
+
+    const dayOne = document.querySelector('.day');
+
+    // console.log(parent.firstElementChild)
+    // console.log(parent.lastElementChild)
+
+    // console.log(dayOne.parentElement) // child to parent
+    console.log(dayOne.nextElementSibling)
+</script>
 </html>
