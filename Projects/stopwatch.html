@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch Design</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #1f1c2c, #928dab);
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            color: #fff;
+        }
+
+        .stopwatch {
+            font-size: 4rem;
+            font-weight: bold;
+            padding: 20px 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        #start {
+            background: #4caf50; /* Green */
+        }
+
+        #stop {
+            background: #f44336; /* Red */
+        }
+
+        #reset {
+            background: #2196f3; /* Blue */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .stopwatch {
+                font-size: 3rem;
+                padding: 15px 30px;
+            }
+
+            button {
+                padding: 10px 20px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stopwatch">00:00:00</div>
+    <div class="buttons">
+        <button id="start">Start</button>
+        <button id="stop">Stop</button>
+        <button id="reset">Reset</button>
+    </div>
+</body>
+
+<script>
+    let timerInterval = null;
+    let seconds = 0;
+
+    function formatTime(seconds) {
+        const hours = String(Math.floor(seconds / 3600)).padStart(2, '0');
+        const minutes = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
+        const secs = String(seconds % 60).padStart(2, '0');
+        return `${hours}:${minutes}:${secs}`;
+    }
+
+    function updateDisplay() {
+        document.querySelector('.stopwatch').textContent = formatTime(seconds);
+    }
+
+    document.querySelector('#start').addEventListener('click',function () {
+
+        if(!timerInterval) {
+
+            timerInterval = setInterval(function(){
+                seconds++;
+                updateDisplay();
+            },1000)
+        }
+    });
+
+    document.querySelector('#stop').addEventListener('click',function(){
+        clearInterval(timerInterval);
+    });
+
+    document.querySelector('#reset').addEventListener('click', function(){
+        clearInterval(timerInterval);
+        timerInterval = null;
+        seconds = 0;
+        updateDisplay();
+    });
+
+    updateDisplay();
+</script>
+</html>

@@ -1,20 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Create Element</title>
     <style>
-        .bg{
-            background-color: black;
-            color: white;
-        }
+      .bg {
+        background-color: black;
+        color: white;
+      }
     </style>
-</head>
-<body class="bg">
-    
-</body>
+  </head>
+  <body class="bg">
+    <ul class="lenguage">
+        <li>Javascript</li>
+    </ul>
+  </body>
 
-<script>
+  <script>
+    // const div = document.createElement("div");
+    // console.log(div);
+    // div.className = 'created_class';
+    // div.id = 'created_id';
+    // div.setAttribute('title','Test');
+    // div.style.backgroundColor = 'green';
 
-</script>
+    // const addText = document.createTextNode('This is Created Element by Javascript.');
+
+    // div.appendChild(addText);
+
+    // document.body.appendChild(div);
+
+    function addLanguage (langName) {
+
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(langName));
+        document.querySelector('.lenguage').appendChild(li);
+    }
+
+    addLanguage('PHP');
+    addLanguage('React');
+  </script>
 </html>
