@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* Style for the card */
+      .card {
+        width: 300px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 20px auto;
+        background-color: #fff;
+        text-align: center;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+      }
+
+      /* Style for the image */
+      .card img {
+        width: 100%;
+        height: auto;
+        border-radius: 50%;
+        margin-bottom: 15px;
+      }
+
+      /* Optional: Styling for text (e.g., username, title) */
+      .card h3 {
+        font-size: 18px;
+        margin: 10px 0;
+        color: #333;
+      }
+
+      .card p {
+        font-size: 14px;
+        color: #777;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 0	UNSENT	Client has been created. open() not called yet.
+    1	OPENED	open() has been called.
+    2	HEADERS_RECEIVED	send() has been called, and headers and status are available.
+    3	LOADING	Downloading; responseText holds partial data.
+    4	DONE	The operation is complete. -->
+    <script>
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", "https://api.github.com/users/hiteshchoudhary");
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          var data = JSON.parse(xhr.responseText);
+          
+          let divElement = document.createElement("div");
+          divElement.className = "card";
+          let image = document.createElement("img");
+          divElement.appendChild(image);
+          image.src = data.avatar_url;
+          let span = document.createElement('span');
+          let textNode = document.createTextNode(`Followers | ${data.followers}`);  // Create the text node with the desired text
+          span.appendChild(textNode); 
+          divElement.appendChild(span);
+          document.body.appendChild(divElement);
+          console.log(data)
+          
+        }
+      };
+      xhr.send();
+    </script>
+  </body>
+</html>
