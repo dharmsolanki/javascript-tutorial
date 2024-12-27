@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Easypay Fill",
+  "version": "1.0",
+  "description": "Fill Up Testing Data",
+  "permissions": ["scripting", "activeTab"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Click to run Easypay script"
+  },
+  "icons": {
+    "48": "Easypay.png"
+  }
+}
