@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO-DO</title>
+    <style>
+        body {
+            background-color: black;
+            color: wheat;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form">
+            <form action="">
+                <input type="text" placeholder="Enter Item" id="input">
+                <button type="button" id="btn">Add</button>
+            </form>
+        </div>
+
+        <div class="list">
+            <ul class="item_list"></ul>
+        </div>
+    </div>
+
+    <script>
+        let btn = document.getElementById("btn");
+        let input = document.getElementById("input");
+
+        function addItem() {
+
+            let item_list = document.querySelector(".item_list");
+            let input_val = input.value.trim();
+
+            if(input_val !== "") {
+
+                let make_li = document.createElement("li");
+                let textNode = document.createTextNode(input_val);
+                make_li.appendChild(textNode);
+                item_list.appendChild(make_li);
+                input.value = "";
+            }
+        }
+        
+        btn.onclick = addItem;
+
+        input.addEventListener("keydown", function(event) {
+            if(event.key === "Enter") {
+                event.preventDefault();
+                addItem();
+            }
+        })
+
+    </script>
+</body>
+</html>

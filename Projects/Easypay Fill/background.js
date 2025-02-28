@@ -1,7 +1,8 @@
 chrome.action.onClicked.addListener((tab) => {
   if (
     tab.url.includes("easypay.drcsystems.ooo") ||
-    tab.url.includes("easypay-new.drcsystems.ooo")
+    tab.url.includes("easypay-new.drcsystems.ooo") ||
+    tab.url.includes("ccavenueprd.ooo")
   ) {
     chrome.scripting.executeScript({
       target: { tabId: tab.id },
